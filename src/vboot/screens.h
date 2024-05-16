@@ -35,6 +35,7 @@ static const struct rgb_color color_light_blue	= { 0x00, 0x99, 0xff };
 static const struct rgb_color color_grey	= { 0x88, 0x88, 0x88 };
 static const struct rgb_color color_white	= { 0xff, 0xff, 0xff };
 static const struct rgb_color color_black	= { 0x00, 0x00, 0x00 };
+static const struct rgb_color color_bg          = { 0x20, 0x21, 0x24 };
 
 vb2_error_t vboot_draw_screen(uint32_t screen, uint32_t locale,
 			      const VbScreenData *data);

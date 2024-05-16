@@ -553,7 +553,7 @@ static vb2_error_t vboot_draw_language(uint32_t locale)
 static vb2_error_t draw_base_screen(uint32_t locale, int show_language)
 {
 
-	if (clear_screen(&color_white))
+	if (clear_screen(&color_bg))
 		return VB2_ERROR_UNKNOWN;
 	RETURN_ON_ERROR(draw_image("chrome_logo.bmp",
 			(VB_SCALE - VB_DIVIDER_WIDTH)/2,
@@ -958,7 +958,7 @@ vb2_error_t vboot_print_string(char *str)
 		{ .width = VB_TO_CANVAS(VB_DIVIDER_WIDTH),
 		  .height = VB_TO_CANVAS(lines * max_height) },
 	};
-	draw_box(&box, &color_white);
+	draw_box(&box, &color_bg);
 
 	while ((line = strsep(&str, "\n"))) {
 		int height = max_height;
@@ -1397,7 +1397,7 @@ static vb2_error_t vboot_init_screen(void)
 	}
 
 	/* Make sure framebuffer is initialized before turning display on. */
-	clear_screen(&color_white);
+	clear_screen(&color_bg);
 	if (display_init())
 		return VB2_ERROR_UNKNOWN;
 
