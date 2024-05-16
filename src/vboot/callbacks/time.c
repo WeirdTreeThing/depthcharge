@@ -36,27 +36,5 @@ void VbExSleepMs(uint32_t msec)
 
 vb2_error_t VbExBeep(uint32_t msec, uint32_t frequency)
 {
-	int res;
-	if (frequency)
-		res = sound_start(frequency);
-	else
-		res = sound_stop();
-
-	if (res > 0) {
-		// The previous call had an error.
-		return VB2_ERROR_UNKNOWN;
-	} else if (res < 0) {
-		// Non-blocking beeps aren't supported.
-		if (msec > 0 && sound_play(msec, frequency))
-			return VB2_ERROR_UNKNOWN;
-		return VBERROR_NO_BACKGROUND_SOUND;
-	} else {
-		// The non-blocking call worked. Delay if requested.
-		if (msec > 0) {
-			mdelay(msec);
-			if (sound_stop())
-				return VB2_ERROR_UNKNOWN;
-		}
-		return VB2_SUCCESS;
-        }
+	return VB2_SUCCESS;
 }
